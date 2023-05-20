@@ -21,7 +21,7 @@ st.title("계절학기 과목")
 name = st.text_input("이름을 입력하세요")
 
 # 숫자 입력
-age = st.number_input("학번을 입력하세요.")
+num = st.number_input("학번을 입력하세요", value=int)
 
 # 체크박스
 agree = st.checkbox("개인정보 수집에 동의합니다.")
@@ -32,8 +32,19 @@ button_clicked = st.button("제출")
 # 제출 버튼을 클릭했을 때 동작
 if button_clicked:
     st.write(f"이름: {name}")
-    st.write(f"나이: {age}")
+    st.write(f"학번: {num}")
     if agree:
         st.write("개인정보 수집에 동의하셨습니다.")
+        view = [1, 2, 3]
+        st.write('# 계절학기 교과목 추천')
+        st.write('## 수강 가능 교과목')
+        view
+        st.write('## 수강 후기')
+        st.bar_chart(view)
+        import pandas as pd
+        st.write('## 교과목 세부 정보')
+        sview = pd.Series(view)
+        sview
+
     else:
         st.write("개인정보 수집에 동의하지 않으셨습니다.")
