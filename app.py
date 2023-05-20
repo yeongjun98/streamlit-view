@@ -1,5 +1,19 @@
 import streamlit as st
 
+# Using object notation
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
+
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
+
+
 # 웹 페이지 타이틀 설정
 st.title("간단한 웹 사이트 샘플")
 
