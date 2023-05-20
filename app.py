@@ -36,13 +36,15 @@ if button_clicked:
     st.write(f"학번: {num}")
     if agree:
         st.write("개인정보 수집에 동의하셨습니다.")
+        
+        st.divider()
         view = [100, 150, 50]
-        st.write('# 계절학기 교과목 추천')
-        st.write('## 수강 가능 교과목')
+        st.write('### 계절학기 교과목 추천')
+        st.write('#### 수강 가능 교과목')
         view
-        st.write('## 수강 후기')
+        st.write('#### 수강 후기')
         st.bar_chart(view)
-        st.write('## 교과목 세부 정보')
+        st.write('#### 교과목 세부 정보')
         sview = pd.Series(view)
         sview
 
