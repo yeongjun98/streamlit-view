@@ -22,7 +22,7 @@ st.title("계절학기 과목")
 name = st.text_input("이름을 입력하세요")
 
 # 숫자 입력
-num = st.number_input("학번을 입력하세요", format=int)
+num = st.number_input("학번을 입력하세요", format=none)
 
 # 체크박스
 agree = st.checkbox("개인정보 수집에 동의합니다.")
