@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 # Using object notation
 add_selectbox = st.sidebar.selectbox(
@@ -41,7 +42,6 @@ if button_clicked:
         view
         st.write('## 수강 후기')
         st.bar_chart(view)
-        import pandas as pd
         st.write('## 교과목 세부 정보')
         sview = pd.Series(view)
         sview
