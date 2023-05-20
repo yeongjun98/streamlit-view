@@ -2,26 +2,26 @@ import streamlit as st
 
 # Using object notation
 add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
+    "과목 구분을 선택하세요",
+    ("전공", "일선", "교양")
 )
 
 # Using "with" notation
 with st.sidebar:
     add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
+        "학기 구분을 선택하세요",
+        ("하계 계절학기", "동계 계절학기")
     )
 
 
 # 웹 페이지 타이틀 설정
-st.title("간단한 웹 사이트 샘플")
+st.title("계절학기 과목")
 
 # 텍스트 입력
-name = st.text_input("이름을 입력하세요.")
+name = st.text_input("이름을 입력하세요")
 
 # 숫자 입력
-age = st.number_input("나이를 입력하세요.", min_value=0, max_value=100)
+age = st.number_input("학번을 입력하세요.", min_value=0, max_value=100)
 
 # 체크박스
 agree = st.checkbox("개인정보 수집에 동의합니다.")
