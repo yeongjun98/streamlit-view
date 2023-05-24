@@ -41,7 +41,7 @@ def main():
 
     # 네비게이션 바
     st.sidebar.title("메뉴")
-    selected_page = st.sidebar.button("페이지 선택", list(pages.keys()))
+    selected_page = st.sidebar.radio("페이지 선택", list(pages.keys()))
 
     # 선택한 페이지 실행
     pages[selected_page]()
