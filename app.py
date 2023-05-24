@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import datetime
-
 
 # Using object notation
 add_selectbox = st.sidebar.selectbox(
@@ -40,12 +38,6 @@ if button_clicked:
         st.write("개인정보 수집에 동의하셨습니다.")
         
         st.divider()
-        
-        d = st.date_input(
-            "When\'s your birthday",
-            datetime.date(2019, 7, 6))
-        st.write('Your birthday is:', d)
-
         view = [100, 150, 50]
         st.write('### 계절학기 교과목 추천')
         st.write('#### 수강 가능 교과목')
@@ -58,6 +50,3 @@ if button_clicked:
 
     else:
         st.write("개인정보 수집에 동의하지 않으셨습니다.")
-
-
-
