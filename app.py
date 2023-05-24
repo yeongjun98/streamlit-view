@@ -1,69 +1,42 @@
 import streamlit as st
+import datetime
 
-# 전남대학교 포털 사이트 테마 설정
-def set_jnu_theme():
-    st.markdown(
-        """
-        <style>
-        /* 전남대학교 포털 사이트 테마 스타일 */
-        body {
-            font-family: '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, sans-serif;
-            background-color: #F1F1F1;
-        }
-        .stApp {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .stContainer {
-            padding: 1rem;
-        }
-        .stButton button {
-            background-color: #0070C0;
-            color: #ffffff;
-        }
-        .stTextInput div div input {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        .stSelectbox div div div[role="button"] {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+# 페이지: 과목추천
+def page_subject_recommendation():
+    st.title("과목 추천")
+    major = st.text_input("학과를 입력하세요.")
+    name = st.text_input("이름을 입력하세요.")
+    student_id = st.text_input("학번을 입력하세요.")
+    remaining_credits = st.number_input("잔여학점을 입력하세요.", min_value=0)
+    theme = st.selectbox("테마를 선택하세요.", ["밝은 테마", "어두운 테마"])
 
-# 메인 페이지
-def main_page():
-    st.title("전남대학교 포털 사이트")
-    st.write("메인 페이지 내용을 여기에 작성하세요.")
+    if st.button("추천 과목 확인"):
+        st.write(f"학과: {major}")
+        st.write(f"이름: {name}")
+        st.write(f"학번: {student_id}")
+        st.write(f"잔여학점: {remaining_credits}")
+        st.write(f"선택한 테마: {theme}")
 
-# 공지사항 페이지
-def announcements_page():
+# 페이지: 전남대학교 스케쥴
+def page_university_schedule():
+    st.title("전남대학교 스케쥴")
+    selected_date = st.date_input("날짜를 선택하세요.", datetime.date.today())
+
+    if st.button("스케쥴 확인"):
+        st.write(f"선택한 날짜: {selected_date}")
+
+# 페이지: 공지사항
+def page_announcements():
     st.title("공지사항")
-    st.write("공지사항 페이지 내용을 여기에 작성하세요.")
-
-# 학사일정 페이지
-def academic_calendar_page():
-    st.title("학사일정")
-    st.write("학사일정 페이지 내용을 여기에 작성하세요.")
-
-# 학과소개 페이지
-def department_introduction_page():
-    st.title("학과소개")
-    st.write("학과소개 페이지 내용을 여기에 작성하세요.")
+    st.write("현재 공지사항이 없습니다.")
 
 # 메인 애플리케이션
 def main():
-    set_jnu_theme()
-
     # 네비게이션 메뉴 설정
     pages = {
-        "메인": main_page,
-        "공지사항": announcements_page,
-        "학사일정": academic_calendar_page,
-        "학과소개": department_introduction_page
+        "과목 추천": page_subject_recommendation,
+        "전남대학교 스케쥴": page_university_schedule,
+        "공지사항": page_announcements
     }
 
     # 네비게이션 바
