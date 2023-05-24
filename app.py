@@ -1,30 +1,52 @@
 import streamlit as st
-import requests
+import pandas as pd
 
-def get_weather(city):
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=YOUR_API_KEY"
-    response = requests.get(url)
-    data = response.json()
-    return data
+# Using object notation
+add_selectbox = st.sidebar.selectbox(
+    "과목 구분을 선택하세요",
+    ("전공", "일선", "교양")
+)
+
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "학기 구분을 선택하세요",
+        ("하계 계절학기", "동계 계절학기")
+    )
+
 
 # 웹 페이지 타이틀 설정
-st.title("날씨 정보")
+st.title("계절학기 과목")
 
-# 도시 선택
-city = st.selectbox("도시를 선택하세요.", ["서울", "뉴욕", "런던"])
+# 텍스트 입력
+name = st.text_input("이름을 입력하세요")
 
-# 도시 선택 후 처리
-if st.button("날씨 확인"):
-    weather_data = get_weather(city)
-    
-    if weather_data["cod"] != "404":
-        main_weather = weather_data["weather"][0]["main"]
-        description = weather_data["weather"][0]["description"]
-        temp = weather_data["main"]["temp"]
-        temp = round(temp - 273.15, 2)  # 온도를 섭씨로 변환
+# 숫자 입력
+num = st.number_input("학번을 입력하세요", min_value=100000, max_value=500000)
+
+# 체크박스
+agree = st.checkbox("개인정보 수집에 동의합니다.")
+
+# 버튼 클릭
+button_clicked = st.button("제출")
+
+# 제출 버튼을 클릭했을 때 동작
+if button_clicked:
+    st.write(f"이름: {name}")
+    st.write(f"학번: {num}")
+    if agree:
+        st.write("개인정보 수집에 동의하셨습니다.")
         
-        st.write(f"도시: {city}")
-        st.write(f"날씨: {main_weather} - {description}")
-        st.write(f"온도: {temp}°C")
+        st.divider()
+        view = [100, 150, 50]
+        st.write('### 계절학기 교과목 추천')
+        st.write('#### 수강 가능 교과목')
+        view
+        st.write('#### 수강 후기')
+        st.bar_chart(view)
+        st.write('#### 교과목 세부 정보')
+        sview = pd.Series(view)
+        sview
+
     else:
-        st.write("날씨 정보를 가져올 수 없습니다.")
+        st.write("개인정보 수집에 동의하지 않으셨습니다.")
