@@ -40,7 +40,7 @@ def main():
     }
 
     # 네비게이션 바
-    # st.sidebar.title("메뉴")
+    st.sidebar.title("메뉴")
     # selected_page = st.sidebar.radio("페이지 선택", list(pages.keys()))
     if st.button("과목 추천") :
         page_subject_recommendation()
