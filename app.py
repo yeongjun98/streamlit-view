@@ -1,52 +1,38 @@
 import streamlit as st
-import pandas as pd
 
-# Using object notation
-add_selectbox = st.sidebar.selectbox(
-    "과목 구분을 선택하세요",
-    ("전공", "일선", "교양")
-)
-
-# Using "with" notation
-with st.sidebar:
-    add_radio = st.radio(
-        "학기 구분을 선택하세요",
-        ("하계 계절학기", "동계 계절학기")
-    )
-
+# 과목 추천 함수
+def recommend_subjects(major):
+    subjects = {
+        "전자공학": ["회로이론", "디지털시스템", "신호 및 시스템"],
+        "컴퓨터공학": ["프로그래밍 기초", "자료구조", "알고리즘"],
+        "경영학": ["경영학원론", "마케팅", "재무관리"]
+    }
+    if major in subjects:
+        return subjects[major]
+    else:
+        return []
 
 # 웹 페이지 타이틀 설정
-st.title("계절학기 과목")
+st.title("과목 추천 시스템")
 
-# 텍스트 입력
-name = st.text_input("이름을 입력하세요")
+# 입력 폼
+major = st.text_input("학과를 입력하세요.")
+name = st.text_input("이름을 입력하세요.")
+student_id = st.text_input("학번을 입력하세요.")
 
-# 숫자 입력
-num = st.number_input("학번을 입력하세요", min_value=100000, max_value=500000)
+# 입력에 대한 출력
+if st.button("추천 과목 확인"):
+    if major and name and student_id:
+        st.write(f"학과: {major}")
+        st.write(f"이름: {name}")
+        st.write(f"학번: {student_id}")
 
-# 체크박스
-agree = st.checkbox("개인정보 수집에 동의합니다.")
-
-# 버튼 클릭
-button_clicked = st.button("제출")
-
-# 제출 버튼을 클릭했을 때 동작
-if button_clicked:
-    st.write(f"이름: {name}")
-    st.write(f"학번: {num}")
-    if agree:
-        st.write("개인정보 수집에 동의하셨습니다.")
-        
-        st.divider()
-        view = [100, 150, 50]
-        st.write('### 계절학기 교과목 추천')
-        st.write('#### 수강 가능 교과목')
-        view
-        st.write('#### 수강 후기')
-        st.bar_chart(view)
-        st.write('#### 교과목 세부 정보')
-        sview = pd.Series(view)
-        sview
-
+        recommended_subjects = recommend_subjects(major)
+        if recommended_subjects:
+            st.write("추천 과목:")
+            for subject in recommended_subjects:
+                st.write(subject)
+        else:
+            st.write("해당 학과에 대한 추천 과목이 없습니다.")
     else:
-        st.write("개인정보 수집에 동의하지 않으셨습니다.")
+        st.write("입력값을 모두 입력해주세요.")
