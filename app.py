@@ -1,42 +1,6 @@
 import streamlit as st
 import datetime
 
-# 전남대학교 로고 색상
-jnu_blue = "#003366"
-jnu_gold = "#FFCC33"
-
-
-# 전남대학교 포털 사이트 테마 설정
-def set_jnu_theme():
-    st.markdown(
-        """
-        <style>
-        /* 전남대학교 포털 사이트 테마 스타일 */
-        body {
-            font-family: '맑은 고딕', 'Malgun Gothic', '돋움', Dotum, sans-serif;
-            background-color: #fafafa;
-        }
-        .stButton>button {
-            background-color: #0070C0;
-            color: #ffffff;
-        }
-        .stTextInput>div>div>input {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        .stNumberInput>div>div>div>input {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        .stSelectbox>div>div>div[role="button"] {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
 # 페이지: 과목추천
 def page_subject_recommendation():
     st.title("과목 추천")
@@ -68,7 +32,6 @@ def page_announcements():
 
 # 메인 애플리케이션
 def main():
-    set_jnu_theme()
     # 네비게이션 메뉴 설정
     pages = {
         "과목 추천": page_subject_recommendation,
