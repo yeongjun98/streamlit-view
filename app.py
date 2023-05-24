@@ -1,6 +1,11 @@
 import streamlit as st
 import datetime
 
+# 전남대학교 로고 색상
+jnu_blue = "#003366"
+jnu_gold = "#FFCC33"
+
+
 # 전남대학교 포털 사이트 테마 설정
 def set_jnu_theme():
     st.markdown(
@@ -63,6 +68,7 @@ def page_announcements():
 
 # 메인 애플리케이션
 def main():
+    set_jnu_theme()
     # 네비게이션 메뉴 설정
     pages = {
         "과목 추천": page_subject_recommendation,
