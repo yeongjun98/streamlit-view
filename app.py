@@ -1,51 +1,35 @@
+import numpy as np
+import pandas as pd 
+from sklearn.datasets import load_iris 
+import matplotlib.pyplot as plt
 import streamlit as st
-import datetime
 
-# 페이지: 과목추천
-def page_subject_recommendation():
-    st.title("과목 추천")
-    major = st.text_input("학과를 입력하세요.")
-    name = st.text_input("이름을 입력하세요.")
-    student_id = st.text_input("학번을 입력하세요.")
-    remaining_credits = st.number_input("잔여학점을 입력하세요.", min_value=0)
-    theme = st.selectbox("테마를 선택하세요.", ["밝은 테마", "어두운 테마"])
 
-    if st.button("추천 과목 확인"):
-        st.write(f"학과: {major}")
-        st.write(f"이름: {name}")
-        st.write(f"학번: {student_id}")
-        st.write(f"잔여학점: {remaining_credits}")
-        st.write(f"선택한 테마: {theme}")
+iris_dataset = load_iris()
 
-# 페이지: 전남대학교 스케쥴
-def page_university_schedule():
-    st.title("전남대학교 스케쥴")
-    selected_date = st.date_input("날짜를 선택하세요.", datetime.date.today())
+df= pd.DataFrame(data=iris_dataset.data,columns= iris_dataset.feature_names)
+df.columns= [ col_name.split(' (cm)')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거하였습니다
+df['species']= iris_dataset.target 
 
-    if st.button("스케쥴 확인"):
-        st.write(f"선택한 날짜: {selected_date}")
 
-# 페이지: 공지사항
-def page_announcements():
-    st.title("공지사항")
-    st.write("현재 공지사항이 없습니다.")
+species_dict = {0 :'setosa', 1 :'versicolor', 2 :'virginica'} 
 
-# 메인 애플리케이션
-def main():
-    # 네비게이션 메뉴 설정
-    pages = {
-        "과목 추천": page_subject_recommendation,
-        "전남대학교 스케쥴": page_university_schedule,
-        "공지사항": page_announcements
-    }
+def mapp_species(x):
+  return species_dict[x]
 
-    # 네비게이션 바
-    st.sidebar.title("메뉴")
-    selected_page = st.sidebar.radio("페이지 선택", list(pages.keys()))
 
-    # 선택한 페이지 실행
-    pages[selected_page]()
+df['species'] = df['species'].apply(mapp_species)
+print(df)
 
-if __name__ == "__main__":
-    main()
+# 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
+st.sidebar.title('Iris Species🌸')
 
+# select_species 변수에 사용자가 선택한 값이 지정됩니다
+select_species = st.sidebar.selectbox(
+    '확인하고 싶은 종을 선택하세요',
+    ['setosa','versicolor','virginica']
+)
+# 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
+tmp_df = df[df['species']== select_species]
+# 선택한 종의 맨 처음 5행을 보여줍니다 
+st.table(tmp_df.head())
