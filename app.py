@@ -1,13 +1,12 @@
-import numpy as np
-import pandas as pd 
-import matplotlib.pyplot as plt
 import streamlit as st
+import pandas as pd
 
+df = pd.DataFrame(
+    [
+        {"command": "st.selectbox", "rating": 4, "is_widget": True},
+        {"command": "st.balloons", "rating": 5, "is_widget": False},
+        {"command": "st.time_input", "rating": 3, "is_widget": True},
+    ]
+)
 
-df = pd.read_csv('./data_df.csv', encoding='cp949')
-
-st.subheader('this is table')
-st.table(df.head())
-
-st.subheader('this is data frame')
-st.dataframe(df.head())
+st.dataframe(df, use_container_width=True)
