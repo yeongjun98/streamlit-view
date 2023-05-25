@@ -9,7 +9,7 @@ def page_subject_recommendation():
     name = st.text_input("이름을 입력하세요.")
     student_id = st.text_input("학번을 입력하세요.")
     remaining_credits = st.number_input("잔여학점을 입력하세요.", min_value=0)
-    select_multi_species = st.sidebar.multiselect(
+    select_multi_species = st.multiselect(
         '원하는 분야를 고르세요',
         ['컴퓨터','경제','사회와지리', '심리', '역사', '언어', '수학', '기초과학', '철학', '정보', '교육','복지','국어와문학','의학','기타']
 
