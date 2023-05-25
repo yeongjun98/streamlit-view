@@ -175,10 +175,14 @@ def main():
 
     # 네비게이션 바
     st.sidebar.title("메뉴")
-    selected_page = st.sidebar.radio("페이지 선택", list(pages.keys()))
+    if st.button("과목추천"):
+        page_subject_recommendation
+    elif st.button("전남대학교 스케쥴"):
+        page_university_schedule
+    elif st.button("공지사항"):
+        page_announcements
+    # selected_page = st.sidebar.radio("페이지 선택", list(pages.keys()))
 
-    # 선택한 페이지 실행
-    pages[selected_page]()
 
 if __name__ == "__main__":
     main()
