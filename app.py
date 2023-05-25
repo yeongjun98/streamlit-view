@@ -1,5 +1,15 @@
 import streamlit as st
 
+tab1, tab2= st.tabs(['Tab A' , 'Tab B'])
+
+with tab1:
+  #tab A 를 누르면 표시될 내용
+  st.write('hello')
+    
+with tab2:
+  #tab B를 누르면 표시될 내용 
+  st.write('hi')
+
 col1,col2 = st.columns([2,3])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
 
