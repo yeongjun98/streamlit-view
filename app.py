@@ -147,6 +147,7 @@ def page_subject_recommendation():
 
 
         tmp_df = df[df['교과구분'].isin(select_multi_species)]
+        tmp_df = tmp_df.loc[:,['교과목','tel', '교과코드', '학점', '강의실', '강의타입']]
         # 선택한 종들의 결과표를 나타냅니다.  
         st.table(tmp_df)    
 
