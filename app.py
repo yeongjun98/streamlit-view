@@ -145,11 +145,13 @@ def page_subject_recommendation():
             ]
         )
 
-#         st.dataframe(df, use_container_width=True)
 
         tmp_df = df[df['교과구분'].isin(select_multi_species)]
         # 선택한 종들의 결과표를 나타냅니다.  
         st.table(tmp_df)    
+
+        st.write("전체 교과목")
+        st.dataframe(df, use_container_width=True)
 
 # 페이지: 전남대학교 스케쥴
 def page_university_schedule():
