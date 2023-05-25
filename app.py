@@ -145,7 +145,7 @@ def page_subject_recommendation():
             ]
         )
 
-        st.dataframe(df, use_container_width=True)
+#         st.dataframe(df, use_container_width=True)
 
         tmp_df = df[df['교과구분'].isin(select_multi_species)]
         # 선택한 종들의 결과표를 나타냅니다.  
