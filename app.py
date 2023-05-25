@@ -9,14 +9,18 @@ def page_subject_recommendation():
     name = st.text_input("이름을 입력하세요.")
     student_id = st.text_input("학번을 입력하세요.")
     remaining_credits = st.number_input("잔여학점을 입력하세요.", min_value=0)
-    theme = st.selectbox("테마를 선택하세요.", ["밝은 테마", "어두운 테마"])
+    select_multi_species = st.sidebar.multiselect(
+        '원하는 분야를 고르세요',
+        ['컴퓨터','경제','사회와지리', '심리', '역사', '언어', '수학', '기초과학', '철학', '정보', '교육','복지','국어와문학','의학','기타']
+
+    )
 
     if st.button("추천 과목 확인"):
         st.write(f"학과: {major}")
         st.write(f"이름: {name}")
         st.write(f"학번: {student_id}")
         st.write(f"잔여학점: {remaining_credits}")
-        st.write(f"선택한 테마: {theme}")
+
 
         # 추천과목 데이터
 
@@ -141,7 +145,11 @@ def page_subject_recommendation():
             ]
         )
 
-        st.dataframe(df, use_container_width=True)    
+        st.dataframe(df, use_container_width=True)
+
+        # tmp_df = df[df['분야'].isin(select_multi_species)]
+        # # 선택한 종들의 결과표를 나타냅니다.  
+        # st.table(tmp_df)    
 
 # 페이지: 전남대학교 스케쥴
 def page_university_schedule():
@@ -174,8 +182,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
 
