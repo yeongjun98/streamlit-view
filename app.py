@@ -306,9 +306,12 @@ def page_announcements():
     )
 
         
-    for i in range(20):
-        if str(df3['date'][i]) == str(datetime.date.today()) :
-            st.write(f"{df3['date'][i]}{df3['name'][i]}")
+    # for i in range(20):
+    #     if str(df3['date'][i]) == str(datetime.date.today()) :
+    #         st.write(f"{df3['date'][i]}{df3['name'][i]}")
+
+    # st.write("공지사항")
+    st.dataframe(df3, use_container_width=True)          
 
 
 # 메인 애플리케이션
