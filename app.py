@@ -272,12 +272,9 @@ def page_university_schedule():
             if str(df2['start'][i]) == str(selected_date) :
                 st.write(f"{selected_date}, 일정입니다.")
                 st.write(f"{df2['name'][i]}")
-            else :
-                st.write("해당 날짜에 일정이 없습니다.")
+            
                 
                 
-        
-
         
 
 # 페이지: 공지사항
