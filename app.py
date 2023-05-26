@@ -274,6 +274,9 @@ def page_university_schedule():
                 st.write(f"{df2['name'][i]}")
             else :
                 st.write("해당 날짜에 일정이 없습니다.")
+                break
+                
+        
 
         
 
