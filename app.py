@@ -270,7 +270,7 @@ def page_university_schedule():
         for i in range(78):
             if str(df2['start'][i]) <= str(selected_date) and str(df2['end'][i]) >= str(selected_date)  :
                 st.write(f"{selected_date}  일정입니다.")
-                st.write(f"{df2['name'][i]}")
+                st.write(f"{df2['start'][i]},~,{df2['end'][i]}{df2['name'][i]}")
 
    
             
