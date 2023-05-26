@@ -269,22 +269,46 @@ def page_university_schedule():
         
         for i in range(78):
             if str(df2['start'][i]) <= str(selected_date) and str(df2['end'][i]) >= str(selected_date)  :
-                st.write(f"{selected_date}  일정입니다.")
-                st.write(f"{df2['start'][i]},~,{df2['end'][i]}{df2['name'][i]}")
-
-   
-            
-
-
-            
+                st.write(f"{df2['start'][i]}~{df2['end'][i]}{df2['name'][i]}")
 
 # 페이지: 공지사항
 def page_announcements():
     st.title("공지사항")
-    st.write("현재 공지사항이 없습니다.")
+    # st.write("현재 공지사항이 없습니다.")
 
+    # selected_date = st.date_input("날짜를 선택하세요.", datetime.date.today())
 
+    # if st.button("스케쥴 확인"):
 
+    df3 = pd.DataFrame(
+        [
+            {'date': '2023-05-08', 'name': '[학사안내] 2023학년도 하계 계절학기 "노인복지(HMM4029...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55769&cate=5'}, 
+            {'date': '2023-05-04', 'name': '[학사안내] 2023학년도 하계 계절학기 운영 계획 안내 및 개설교과목 공고', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55719&cate=5'}, 
+            {'date': '2023-03-28', 'name': '[학사안내] 2023학년도 후기 일반대학원 입학전형 모집요강 공고', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55106&cate=5'}, 
+            {'date': '2023-03-14', 'name': '[학사안내] 출석인정처리 절차 변경(개선)에 따른 매뉴얼 안내', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=54925&cate=5'}, 
+            {'date': '2023-02-17', 'name': '[학사안내] 2024학년도 모집단위간이동(전과) 학과별 선발기준 안내', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=53603&cate=5'}, 
+            {'date': '2023-02-07', 'name': '[학사안내] 2023학년도 1학기 교양 교육과정 편성 현황 안내', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=53502&cate=5'}, 
+            {'date': '2023-01-30', 'name': '[학사안내] 2023학년도 대학생활안내 자료', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=53380&cate=5'}, 
+            {'date': '2023-05-23', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(호남대) 교류학생 신청...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=56043&cate=5'}, 
+            {'date': '2023-05-23', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(초당대) 교류학생 신청...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=56036&cate=5'}, 
+            {'date': '2023-05-19', 'name': '[학사안내] 국립광주과학관 제5회 매스아트(Math Art)  작품공모전 안내', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55998&cate=5'}, 
+            {'date': '2023-05-19', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(광주대) 교류학생 신청...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55995&cate=5'}, 
+            {'date': '2023-05-18', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(한국과학기술원) 교류학...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55989&cate=5'}, 
+            {'date': '2023-05-18', 'name': '[학사안내] 2023학년도 1학기 재학생 분할납부 4회차 고지서 출력', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55980&cate=5'}, 
+            {'date': '2023-05-17', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(명지대) 교류학생 신청...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55961&cate=5'}, 
+            {'date': '2023-05-17', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(광주대) 교류학생 신청...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55960&cate=5'}, 
+            {'date': '2023-05-16', 'name': '[학사안내] 2023학년도 하계 계절학기 1차 폐강교과목 공고', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55938&cate=5'}, 
+            {'date': '2023-05-16', 'name': '[학사안내] 2023학년도 하계 계절학기 타 대학교(울산과학기술원) 교류학...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55914&cate=5'}, 
+            {'date': '2023-05-15', 'name': '[학사안내] 2023년 2학기 삼성드림클래스 대학생 멘토 선발 안내', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55886&cate=5'}, 
+            {'date': '2023-05-15', 'name': '[학사안내] 취업컨설팅(이력서 첨삭) & 경력개발 컨설팅 신청 안내 (전액...', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55884&cate=5'}, 
+            {'date': '2023-05-12', 'name': '[학사안내] 백제 계산공주 및 백제 금동대향로 원작 소설 공모전 안내', 'href': 'https://www.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=5&bbsMode=view&page=1&key=55873&cate=5'}
+            ]
+    )
+
+        
+    for i in range(20):
+        if float(df3['date'][i]) >= float(datetime.date.today())-10 and float(df3['end'][i]) <= float(datetime.date.today())+10  :
+            st.write(f"{df3['date'][i]}{df3['name'][i]}")
 
 
 # 메인 애플리케이션
