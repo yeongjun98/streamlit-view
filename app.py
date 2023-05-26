@@ -270,6 +270,7 @@ def page_university_schedule():
         for i in range(78):
             if str(df2['start'][i]) <= str(selected_date) and str(df2['end'][i]) >= str(selected_date)  :
                 st.write(f"{df2['start'][i]}~{df2['end'][i]}{df2['name'][i]}")
+                break
             elif i == 77 :
                 st.write("일정이 없습니다.")
 
