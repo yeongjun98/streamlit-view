@@ -307,7 +307,7 @@ def page_announcements():
 
         
     for i in range(20):
-        if float(df3['date'][i]) >= float(datetime.date.today())-10 and float(df3['end'][i]) <= float(datetime.date.today())+10  :
+        if str(df3['date'][i]) == str(datetime.date.today()) :
             st.write(f"{df3['date'][i]}{df3['name'][i]}")
 
 
