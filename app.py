@@ -269,7 +269,7 @@ def page_university_schedule():
                 {'start': '2023-12-15', 'end': '2024-01-03', 'name': '제2학기 최종 수업평가'}])
         
         for i in range(116):
-            if df2['start'][i] == selected_date :
+            if str(df2['start'][i]) == str(selected_date) :
                 st.write(f"{selected_date}, 일정입니다.")
                 st.write(f"{df2['name'][i]}")
             else :
