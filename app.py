@@ -186,7 +186,6 @@ def page_university_schedule():
     selected_date = st.date_input("날짜를 선택하세요.", datetime.date.today())
 
     if st.button("스케쥴 확인"):
-        st.write(f"선택한 날짜: {selected_date}")
 
         df2 = pd.DataFrame([
                 {'start': '2023-01-02', 'end': '2023-01-02', 'name': '제2학기 성적정정 마감'}, 
@@ -268,14 +267,19 @@ def page_university_schedule():
                 {'start': '2023-12-15', 'end': '2024-01-10', 'name': '제2학기 교수수업개선서(CQI) 입력'}, 
                 {'start': '2023-12-15', 'end': '2024-01-03', 'name': '제2학기 최종 수업평가'}])
         
-        for i in range(78):
+        name = []
+        for i in range(87):
             if str(df2['start'][i]) == str(selected_date) :
-                st.write(f"{selected_date}, 일정입니다.")
-                st.write(f"{df2['name'][i]}")
+                name.append()
+        st.write(f"{selected_date} 일정입니다.")
+        st.write(name)
+        # st.write(f"{df2['name'][i]}")
+
+        # st.write("일정이 없습니다.")    
             
+
+
             
-                
-        
 
 # 페이지: 공지사항
 def page_announcements():
