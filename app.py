@@ -157,12 +157,17 @@ def page_subject_recommendation():
             tmp_df = tmp_df.loc[:,['교과목','tel', '교과코드', '학점', '강의실', '강의타입']]
 
         elif select_multi_species == "일선" :
-#             elective_list = []
-#             for i in range(116) :
-#                 if (df['교과구분'][i] == '전공' or df['교과구분'][i] == '전선' or df['교과구분'][i] == '전필') :
-#                     if (df['개설학과'][i] != major) :
-#                         elective_list.append()
-#             df = df[df['교과구분'].isin(elective_list)]
+            elective_list = []
+            for i in range(116) :
+                # if ((df['교과구분'][i] == '전공' or df['교과구분'][i] == '전선' or df['교과구분'][i] == '전필') and df['개설학과'][i] != major) :
+                #     elective_list.append()
+                if (df['교과구분'][i] == '전공' or df['교과구분'][i] == '전선' or df['교과구분'][i] == '전필') :
+                    if (df['개설학과'][i] != major) :
+                        elective_list.append()
+                elif df['교과구분'][i] == '일선' :
+                        elective_list.append()
+                    
+            df = df[df['교과구분'].isin(elective_list)]
             tmp_df = df[df['분야'].isin(select_multi_species2)]
             tmp_df = tmp_df.loc[:,['교과목','tel', '교과코드', '학점', '강의실', '강의타입']]
 
@@ -274,8 +279,6 @@ def page_university_schedule():
                 break
             elif i == 77 :
                 st.write("일정이 없습니다.")
-
-
 
 
 # 페이지: 공지사항
